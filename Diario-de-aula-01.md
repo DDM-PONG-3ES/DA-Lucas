@@ -1,4 +1,4 @@
-# Diário de Aula – Lucas Ribeiro
+# Diário de Aula – Lucas Ribeiro - 06/03/2025
 
 Aqui estão as respostas às perguntas estipuladas pelo professor.
 
