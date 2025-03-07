@@ -6,9 +6,9 @@ Aqui estão as respostas às perguntas estipuladas pelo professor.
 
 ## 1. Qual a diferença entre desenvolver um software no instituto e em uma empresa?
 
-A principal diferença está na organização e na escala do trabalho. O desenvolvimento de software em empresas geralmente envolve um número maior de pessoas e diferentes setores colaborando para garantir a qualidade e funcionamento do sistema. Além disso, há uma pressão maior para atender demandas e cumprir prazos.
+A principal diferença está na organização e na escala do trabalho. O desenvolvimento de software em empresas geralmente envolve um número maior de pessoas e diferentes setores colaborando para garantir a qualidade e funcionamento do sistema. Além disso, há uma pressão maior para atender demandas e cumprir prazos. E por fim, o objetivo final é o lucro.
 
-Já no ambiente acadêmico, os projetos costumam ser desenvolvidos por grupos menores ou até individualmente, com o objetivo de estimular a autodisciplina e o aprendizado prático.
+Já no ambiente acadêmico, os projetos costumam ser desenvolvidos por grupos menores ou até individualmente, com o objetivo de estimular a autodisciplina e o aprendizado prático. O foco da entrega é a aprendizagem.
 
 ---
 
@@ -79,7 +79,9 @@ O aluno deve:
 - **(2) Tarefas complexas com um prazo curto?** ✅ *(Mais desafiador)*
 - **(3) Como solucionar cada um desses desafios?**  
 
-🔑 **Solução** → Organização. A correta distribuição das tarefas ao longo do prazo evita sobrecarga e melhora a eficiência.
+🔑 **Solução 1° cenário** → Pro segundo cenário: Organização. A correta distribuição das tarefas ao longo do prazo evita sobrecarga e melhora a eficiência.
+
+🔑 **Solução 2° cenário** → Pro primeiro cenário, caso faça algo rápido em menos tempo do que o planejado, é um tempo hábil para treinar as soft skills, revisar, discutir com os colegas.
 
 ---
 
@@ -104,4 +106,6 @@ O aluno deve:
 ## 11. Quais estratégias podem manter o entusiasmo do primeiro dia até o final do ano?
 
 🎮 **Atividades que tragam diversão ao aprendizado** → Nosso cérebro associa atividades prazerosas à motivação, tornando o processo mais envolvente e estimulante.
+
+Além disso, é bom 
 
