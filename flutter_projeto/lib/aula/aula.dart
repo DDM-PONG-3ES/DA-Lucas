@@ -3,7 +3,7 @@ import 'dart:io';
 import 'dart:io';
 
 import 'package:flutter_projeto/aula/Cliente.dart';
-import 'package:flutter_projeto/aula/validacoes.dart';
+import 'package:flutter_projeto/aula/Validacoes.dart';
 
 void main() {
   int id;
