@@ -30,4 +30,27 @@ O Flutter é um framework que utiliza a linguagem de programação Dart.
 
 ## Boas Práticas de Flutter e Dart
 
-- **Uso de `var`**: É uma boa prática usar `var` quando você já tem um valor definido para uma variável. Isso permite que o Dart infira o tipo automaticamente, tornando o código mais conciso e fácil de manter. No entanto, se a variável não for inicializada, é recomendável declarar explicitamente o tipo para evitar que o Dart o defina como `dynamic`.
+### 1. Uso de `var`
+- Utilize `var` quando a variável for inicializada imediatamente. O Dart infere automaticamente o tipo, tornando o código mais conciso.
+- Se a variável não for inicializada, declare explicitamente o tipo para evitar que seja definida como `dynamic`.
+
+### 2. Nomenclatura
+- Use nomes descritivos para variáveis, funções e classes.
+- Siga as convenções:
+  - Variáveis e funções: `lowerCamelCase`.
+  - Classes: `UpperCamelCase`.
+
+### 3. Tratamento de Erros
+- Sempre valide entradas do usuário para evitar falhas no programa.
+- Utilize blocos `try/catch` para capturar exceções específicas
+  
+### 4. Imutabilidade
+- Prefira usar `final` ou `const` sempre que possível para variáveis cujo valor não muda após a inicialização.
+
+### 5. Modularidade
+- Divida seu código em classes ou arquivos separados para facilitar a manutenção e reutilização.
+- Exemplo:
+- Crie uma classe específica para representar dados complexos (ex.: Cliente).
+- Separe widgets personalizados em arquivos próprios.
+
+  
