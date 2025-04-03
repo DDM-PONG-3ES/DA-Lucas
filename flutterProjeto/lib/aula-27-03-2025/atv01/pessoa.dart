@@ -38,31 +38,31 @@ class Pessoa {
   }
 
   void exibirDados() {
-    print('--- Dados da Pessoa ---');
+    print('\n--- Dados da Pessoa ---');
     print('Nome: $_nome');
     print('Idade: $_idade anos');
     print('Peso: $_peso kg');
   }
 }
 
-// void main() {
-//   try {
-//     print('Digite o nome:');
-//     String nome = stdin.readLineSync() ?? '';
-//     if (nome.isEmpty) throw Exception('O nome não pode ser vazio.');
+void main() {
+  try {
+    print('Digite o nome:');
+    String nome = stdin.readLineSync() ?? '';
+    if (nome.isEmpty) throw Exception('O nome não pode ser vazio.');
 
-//     print('Digite a idade:');
-//     int idade = int.tryParse(stdin.readLineSync() ?? '') ?? -1;
-//     if (idade <= 0) throw Exception('A idade deve ser maior que 0.');
+    print('Digite a idade:');
+    int idade = int.tryParse(stdin.readLineSync() ?? '') ?? -1;
+    if (idade <= 0) throw Exception('A idade deve ser maior que 0.');
 
-//     print('Digite o peso:');
-//     double peso = double.tryParse(stdin.readLineSync() ?? '') ?? -1;
-//     if (peso <= 0) throw Exception('O peso deve ser maior que 0.');
+    print('Digite o peso:');
+    double peso = double.tryParse(stdin.readLineSync() ?? '') ?? -1;
+    if (peso <= 0) throw Exception('O peso deve ser maior que 0.');
 
-//     Pessoa pessoa = Pessoa(nome: nome, idade: idade, peso: peso);
+    Pessoa pessoa = Pessoa(nome: nome, idade: idade, peso: peso);
 
-//     pessoa.exibirDados();
-//   } catch (e) {
-//     print('Erro: ${e.toString()}');
-//   }
-// }
+    pessoa.exibirDados();
+  } catch (e) {
+    print('Erro: ${e.toString()}');
+  }
+}
