@@ -1,6 +1,6 @@
 # ATIVIDADE 02
 
-# Diário de Aula – 03/04/2025
+# Diário de Aula – 03/04/2025 (referente à atividade 02)
 
 A aula de hoje teve como foco principal o uso de **funções anônimas** em Dart aplicadas a objetos compostos, reforçando conceitos de **POO (Programação Orientada a Objetos)** como encapsulamento, composição e ações simuladas em objetos com comportamento.
 
