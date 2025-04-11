@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project/configuracao/rotas.dart';
+import 'package:project/widget/widget_botao.dart';
 
 class WidgetEstado extends StatelessWidget {
   const WidgetEstado({Key? key}) : super(key: key);
@@ -38,6 +40,7 @@ class WidgetEstado extends StatelessWidget {
                 print('Região selecionada: $value');
               },
             ),
+            WidgetBotao(rota: Rotas.home, rotulo: 'Voltar')
           ],
         ),
       ),
