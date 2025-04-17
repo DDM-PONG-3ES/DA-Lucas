@@ -4,6 +4,7 @@ import 'package:project/widget/widget_cidade.dart';
 import 'package:project/widget/widget_estado.dart';
 import 'package:project/widget/widget_menu.dart';
 import 'package:project/widget/widget_pessoa.dart';
+import 'package:project/widget/widget_pessoa_lista.dart';
 
 class Aplicativo extends StatelessWidget {
   const Aplicativo({key}) : super(key: key);
@@ -15,7 +16,8 @@ class Aplicativo extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: Rotas.home,
       routes: {
-        Rotas.home: (context) => const WidgetMenu(),
+        Rotas.home: (context) => WidgetPessoaLista(),
+        // Rotas.home: (context) => const WidgetMenu(),
         Rotas.estado: (context) => const WidgetEstado(),
         Rotas.cidade: (context) => const WidgetCidade(),
         Rotas.pessoa: (context) => const WidgetPessoa(),
