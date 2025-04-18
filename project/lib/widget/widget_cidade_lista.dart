@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:project/configuracao/rotas.dart';
 import 'package:project/widget/widget_lista.dart';
 
-class WidgetPessoaLista extends StatelessWidget {
-  final pessoas = [
-    {'nome': 'Mr. Burns', 'descricao': '(44) 9 9999-9999'},
-    {'nome': 'Tirica', 'descricao': '(44) 9 4002-8922'},
-    {'nome': 'Neymar', 'descricao': '(44) 9 3245-6589'},
+class WidgetCidadeLista extends StatelessWidget {
+  var cidades = [
+    {'nome': 'Paranavaí', 'estado': 'Paraná'},
+    {'nome': 'São Paulo', 'estado': 'São Paulo'},
+    {'nome': 'Naviraí', 'estado': 'Mato Grosso do Sul'},
   ];
 
-  WidgetPessoaLista({Key? key}) : super(key: key);
+  WidgetCidadeLista({super.key});
 
   @override
   Widget build(BuildContext context) {
     return WidgetLista(
-      itens: pessoas,
-      titulo: 'Lista de Pessoas',
+      itens: cidades,
+      titulo: 'Lista de Cidades',
       onEditar: (index) {
         Navigator.pushNamed(context, Rotas.pessoa);
       },

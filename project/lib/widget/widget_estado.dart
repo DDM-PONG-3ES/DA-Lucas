@@ -1,49 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:project/configuracao/rotas.dart';
-import 'package:project/widget/widget_botao.dart';
+import 'package:project/widget/widget_estado_lista.dart';
 
-class WidgetEstado extends StatelessWidget {
-  const WidgetEstado({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
+class WidgetEstado extends StatelessWidget{
+  const WidgetEstado({key}) : super(key: key);
+  @override 
+  Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(title: const Text('Cadastro de Estado')),
-      body: Form(
-        child: Column(
+      appBar: AppBar( 
+        title: const Text('Cadastro de Estado'),
+      ),
+      body: Form(  
+        child: Column(   
           children: [
             TextFormField(
-              decoration: InputDecoration(
-                labelText: 'Nome: ',
-                hintText: 'Informe o nome do estado',
+              decoration: const InputDecoration( 
+                labelText: 'Nome',
+                hintText: 'Insira o nome do estado'
               ),
             ),
+            
             TextFormField(
-              decoration: InputDecoration(
-                labelText: 'Sigla: ',
-                hintText: 'Informe a sigla do estado',
+              decoration: const InputDecoration( 
+                labelText: 'Sigla',
+                hintText: 'Insira a sigla do estado - 2 letras'
               ),
             ),
-            DropdownButtonFormField<String>(
-              decoration: const InputDecoration(labelText: 'Região: '),
-              items: const [
-                DropdownMenuItem(value: 'Norte', child: Text('Norte')),
-                DropdownMenuItem(value: 'Nordeste', child: Text('Nordeste')),
-                DropdownMenuItem(
-                  value: 'Centro-Oeste',
-                  child: Text('Centro-Oeste'),
-                ),
-                DropdownMenuItem(value: 'Sul', child: Text('Sul')),
-                DropdownMenuItem(value: 'Sudeste', child: Text('Sudeste')),
-              ],
-              onChanged: (value) {
-                print('Região selecionada: $value');
+            ElevatedButton(  
+              child: const Text('Salvar'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => WidgetEstadoLista()),
+                );
               },
-            ),
-            WidgetBotao(rota: Rotas.home, rotulo: 'Voltar')
+            )
           ],
         ),
-      ),
+      )
     );
   }
 }

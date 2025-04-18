@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:project/configuracao/rotas.dart';
 import 'package:project/widget/widget_cidade.dart';
+import 'package:project/widget/widget_cidade_lista.dart';
 import 'package:project/widget/widget_estado.dart';
+import 'package:project/widget/widget_estado_lista.dart';
 import 'package:project/widget/widget_menu.dart';
 import 'package:project/widget/widget_pessoa.dart';
 import 'package:project/widget/widget_pessoa_lista.dart';
@@ -16,8 +18,10 @@ class Aplicativo extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: Rotas.home,
       routes: {
-        Rotas.home: (context) => WidgetPessoaLista(),
-        // Rotas.home: (context) => const WidgetMenu(),
+        Rotas.home: (context) => const WidgetMenu(),
+        Rotas.pessoasLista: (context) => WidgetPessoaLista(),
+        Rotas.estadosLista: (context) => WidgetEstadoLista(),
+        Rotas.cidadesLista: (context) => WidgetCidadeLista(),
         Rotas.estado: (context) => const WidgetEstado(),
         Rotas.cidade: (context) => const WidgetCidade(),
         Rotas.pessoa: (context) => const WidgetPessoa(),

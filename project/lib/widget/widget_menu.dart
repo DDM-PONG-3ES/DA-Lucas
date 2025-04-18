@@ -3,28 +3,69 @@ import 'package:project/configuracao/rotas.dart';
 import 'package:project/widget/widget_botao.dart';
 
 class WidgetMenu extends StatelessWidget {
-  // ignore: use_super_parameters
-  const WidgetMenu({key}) : super(key: key);
-  Widget criarBotao(BuildContext context, String rotulo, String rota) {
-    return ElevatedButton(
-      child: Text(rotulo),
-      onPressed: () {
-        Navigator.of(context).pushNamed(rota);
-      },
-    );
-  }
+  const WidgetMenu({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        criarBotao(context, 'Cadastro de Estado', Rotas.estado),
-        WidgetBotao(
-          rota: Rotas.cidade,
-          rotulo: 'Cadastro de Cidade',
+    Widget criarMenu({
+      required IconData icone,
+      required String rotulo,
+      required String rota,
+    }) {
+      return ListTile(
+        leading: Icon(icone),
+        title: Text(rotulo),
+        onTap: () => Navigator.pushNamed(context, rota),
+      );
+    }
+
+    return Scaffold(
+      appBar: AppBar(title: const Text('Menu Principal')),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(color: Colors.blue),
+              child: Text(
+                'Menu',
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
+            ),
+            criarMenu(
+              icone: Icons.map,
+              rotulo: 'Cadastro de Estado',
+              rota: Rotas.estado,
+            ),
+            criarMenu(
+              icone: Icons.location_city,
+              rotulo: 'Cadastro de Cidade',
+              rota: Rotas.cidade,
+            ),
+            criarMenu(
+              icone: Icons.person,
+              rotulo: 'Cadastro de Pessoa',
+              rota: Rotas.pessoa,
+            ),
+            criarMenu(
+              icone: Icons.list,
+              rotulo: 'Lista de Pessoas',
+              rota: Rotas.pessoasLista,
+            ),
+            criarMenu(
+              icone: Icons.list,
+              rotulo: 'Lista de Estados',
+              rota: Rotas.estadosLista,
+            ),
+            criarMenu(
+              icone: Icons.list,
+              rotulo: 'Lista de Cidades',
+              rota: Rotas.cidadesLista,
+            ),
+          ],
         ),
-        criarBotao(context, 'Cadastro de Pessoa', Rotas.pessoa),
-      ],
+      ),
+      body: const Center(child: Text('Bem-vindo ao App de Cadastro!')),
     );
   }
 }
