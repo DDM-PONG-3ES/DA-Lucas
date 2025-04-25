@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:project/widget/widget_formulario.dart';
-import 'package:project/widget/widget_pessoa_lista.dart';
+import 'package:project/widget/stateless/widget_formulario.dart';
+import 'package:project/widget/stateless/widget_pessoa_lista.dart';
 
 class WidgetPessoa extends StatelessWidget {
   const WidgetPessoa({key}) : super(key: key);

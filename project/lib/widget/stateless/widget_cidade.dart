@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project/widget/widget_cidade_lista.dart';
+import 'package:project/widget/stateless/widget_cidade_lista.dart';
 
 class WidgetCidade extends StatelessWidget{
   const WidgetCidade({key}) : super(key: key);

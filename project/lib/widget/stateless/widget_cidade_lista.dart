@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project/configuracao/rotas.dart';
-import 'package:project/widget/widget_lista.dart';
+import 'package:project/widget/stateless/widget_lista.dart';
 
 class WidgetCidadeLista extends StatelessWidget {
   var cidades = [

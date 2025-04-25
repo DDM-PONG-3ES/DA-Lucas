@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project/configuracao/rotas.dart';
-import 'package:project/widget/widget_botao.dart';
+import 'package:project/widget/stateless/widget_botao.dart';
 
 class WidgetMenu extends StatelessWidget {
   const WidgetMenu({super.key});
@@ -61,6 +61,16 @@ class WidgetMenu extends StatelessWidget {
               icone: Icons.list,
               rotulo: 'Lista de Cidades',
               rota: Rotas.cidadesLista,
+            ),
+            criarMenu(
+              icone: Icons.list,
+              rotulo: 'Lista de Nomes',
+              rota: Rotas.listaNomes,
+            ),
+            criarMenu(
+              icone: Icons.person,
+              rotulo: 'Formulário',
+              rota: Rotas.formulario,
             ),
           ],
         ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project/widget/widget_estado_lista.dart';
+import 'package:project/widget/stateless/widget_estado_lista.dart';
 
 class WidgetEstado extends StatelessWidget{
   const WidgetEstado({key}) : super(key: key);
