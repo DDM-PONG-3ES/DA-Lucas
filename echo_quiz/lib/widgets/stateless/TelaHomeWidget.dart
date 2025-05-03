@@ -7,9 +7,18 @@ class TelaHomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('EchoQuiz')),
+      appBar: AppBar(
+        title: const Text('EchoQuiz'),
+        backgroundColor: Colors.red,
+      ),
       body: Center(
         child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+            minimumSize: const Size(150, 60),
+            backgroundColor: Colors.red,
+            foregroundColor: Colors.white,
+          ),
           onPressed: () {
             Navigator.push(
               context,
