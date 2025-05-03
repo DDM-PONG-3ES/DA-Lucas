@@ -1,3 +1,7 @@
+import 'package:echo_quiz/entidades/Categoria.dart';
+import 'package:echo_quiz/entidades/Historico.dart';
+import 'package:echo_quiz/entidades/Pergunta.dart';
+import 'package:echo_quiz/entidades/Pontuacao.dart';
 import 'package:flutter/material.dart';
 
 class TelaQuizWidget extends StatefulWidget {
@@ -8,17 +12,28 @@ class TelaQuizWidget extends StatefulWidget {
 }
 
 class _EstadoTelaQuiz extends State<TelaQuizWidget> {
-  final List<Map<String, String>> _questoes = [
-    {'dica': 'Rei do Pop', 'resposta': 'Michael Jackson'},
-    {
-      'dica': 'Banda britânica famosa por "Bohemian Rhapsody"',
-      'resposta': 'Queen',
-    },
-    {'dica': 'Cantora conhecida por "Hello"', 'resposta': 'Adele'},
+  final List<Pergunta> _questoes = [
+    Pergunta(
+      dica: 'Rei do Pop',
+      resposta: 'Michael Jackson',
+      categoria: Categoria(nome: 'Pop'),
+    ),
+    Pergunta(
+      dica: 'Banda britânica famosa por "Bohemian Rhapsody"',
+      resposta: 'Queen',
+      categoria: Categoria(nome: 'Rock'),
+    ),
+    Pergunta(
+      dica: 'Cantora conhecida por "Hello"',
+      resposta: 'Adele',
+      categoria: Categoria(nome: 'Pop'),
+    ),
   ];
 
   int _atualIndiceQuestao = 0;
   bool _respostaAMostra = false;
+  final Pontuacao _pontuacao = Pontuacao();
+  final List<Historico> _historico = [];
 
   void _mostrarResposta() {
     setState(() {
@@ -39,6 +54,18 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
     });
   }
 
+  void _responder(bool acertou) {
+    setState(() {
+      _historico.add(
+        Historico(pergunta: _questoes[_atualIndiceQuestao], acertou: acertou),
+      );
+      if (acertou) {
+        _pontuacao.incrementar(10);
+      }
+      _proximaPergunta();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final questaoAtual = _questoes[_atualIndiceQuestao];
@@ -52,14 +79,14 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'Dica: ${questaoAtual['dica']}',
+              'Dica: ${questaoAtual.dica}',
               style: const TextStyle(fontSize: 18),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
             if (_respostaAMostra)
               Text(
-                'Resposta: ${questaoAtual['resposta']}',
+                'Resposta: ${questaoAtual.resposta}',
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -68,8 +95,11 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
               ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: _respostaAMostra ? _esconderResposta : _mostrarResposta,
-              child: Text(_respostaAMostra ? 'Esconder resposta' : 'Mostrar resposta'),
+              onPressed:
+                  _respostaAMostra ? _esconderResposta : _mostrarResposta,
+              child: Text(
+                _respostaAMostra ? 'Esconder resposta' : 'Mostrar resposta',
+              ),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
