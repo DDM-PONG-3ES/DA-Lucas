@@ -12,7 +12,7 @@ class TelaQuizWidget extends StatefulWidget {
 }
 
 class _EstadoTelaQuiz extends State<TelaQuizWidget> {
-  final List<Pergunta> _questoes = [
+  final List<Pergunta> _perguntas = [
     Pergunta(
       dica: 'Rei do Pop',
       resposta: 'Michael Jackson',
@@ -30,7 +30,7 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
     ),
   ];
 
-  int _atualIndiceQuestao = 0;
+  int _atualIndicePergunta = 0;
   bool _respostaAMostra = false;
   final Pontuacao _pontuacao = Pontuacao();
   final List<Historico> _historico = [];
@@ -49,7 +49,7 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
 
   void _proximaPergunta() {
     setState(() {
-      _atualIndiceQuestao = (_atualIndiceQuestao + 1) % _questoes.length;
+      _atualIndicePergunta = (_atualIndicePergunta + 1) % _perguntas.length;
       _respostaAMostra = false;
     });
   }
@@ -57,7 +57,7 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
   void _responder(bool acertou) {
     setState(() {
       _historico.add(
-        Historico(pergunta: _questoes[_atualIndiceQuestao], acertou: acertou),
+        Historico(pergunta: _perguntas[_atualIndicePergunta], acertou: acertou),
       );
       if (acertou) {
         _pontuacao.incrementar(10);
@@ -68,10 +68,13 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final questaoAtual = _questoes[_atualIndiceQuestao];
+    final questaoAtual = _perguntas[_atualIndicePergunta];
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Quiz')),
+      appBar: AppBar(
+        title: const Text('Quiz'),
+        backgroundColor: Colors.red,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -80,7 +83,10 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
           children: [
             Text(
               'Dica: ${questaoAtual.dica}',
-              style: const TextStyle(fontSize: 18),
+              style: const TextStyle(
+                fontSize: 20,
+                color: Colors.white,
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
@@ -88,17 +94,17 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
               Text(
                 'Resposta: ${questaoAtual.resposta}',
                 style: const TextStyle(
-                  fontSize: 18,
+                  fontSize: 22,
                   fontWeight: FontWeight.bold,
+                  color: Colors.red,
                 ),
                 textAlign: TextAlign.center,
               ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed:
-                  _respostaAMostra ? _esconderResposta : _mostrarResposta,
+              onPressed: _respostaAMostra ? _esconderResposta : _mostrarResposta,
               child: Text(
-                _respostaAMostra ? 'Esconder resposta' : 'Mostrar resposta',
+                _respostaAMostra ? 'Esconder Resposta' : 'Revelar Resposta',
               ),
             ),
             const SizedBox(height: 20),
