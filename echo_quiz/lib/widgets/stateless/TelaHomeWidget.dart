@@ -1,8 +1,8 @@
-import 'package:echo_quiz/widgets/stateless/TelaQuizWidget.dart';
+import 'package:echo_quiz/widgets/stateful/TelaQuizWidget.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class TelaHomeWidget extends StatelessWidget {
+  const TelaHomeWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const QuizScreen()),
+              MaterialPageRoute(builder: (context) => const TelaQuizWidget()),
             );
           },
           child: const Text('Começar'),
