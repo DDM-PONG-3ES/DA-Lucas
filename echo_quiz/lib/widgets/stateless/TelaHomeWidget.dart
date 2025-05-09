@@ -1,3 +1,4 @@
+import 'package:echo_quiz/config/Rotas.dart';
 import 'package:echo_quiz/widgets/stateful/TelaQuizWidget.dart';
 import 'package:flutter/material.dart';
 
@@ -20,10 +21,7 @@ class TelaHomeWidget extends StatelessWidget {
             foregroundColor: Colors.white,
           ),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const TelaQuizWidget()),
-            );
+            Navigator.pushNamed(context, Rotas.quiz);
           },
           child: const Text('Começar'),
         ),

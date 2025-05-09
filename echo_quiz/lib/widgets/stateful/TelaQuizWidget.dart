@@ -1,3 +1,4 @@
+import 'package:echo_quiz/config/Rotas.dart';
 import 'package:echo_quiz/entidades/Categoria.dart';
 import 'package:echo_quiz/entidades/Historico.dart';
 import 'package:echo_quiz/entidades/Pergunta.dart';
@@ -71,10 +72,7 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
     final questaoAtual = _perguntas[_atualIndicePergunta];
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Quiz'),
-        backgroundColor: Colors.red,
-      ),
+      appBar: AppBar(title: const Text('Quiz'), backgroundColor: Colors.red),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -83,10 +81,7 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
           children: [
             Text(
               'Dica: ${questaoAtual.dica}',
-              style: const TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-              ),
+              style: const TextStyle(fontSize: 20, color: Colors.white),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
@@ -102,7 +97,8 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
               ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: _respostaAMostra ? _esconderResposta : _mostrarResposta,
+              onPressed:
+                  _respostaAMostra ? _esconderResposta : _mostrarResposta,
               child: Text(
                 _respostaAMostra ? 'Esconder Resposta' : 'Revelar Resposta',
               ),
@@ -111,6 +107,13 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
             ElevatedButton(
               onPressed: _proximaPergunta,
               child: const Text('Próxima Pergunta'),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, Rotas.cadastroPergunta);
+              },
+              child: const Text('Cadastrar uma nova Pergunta'),
             ),
           ],
         ),
