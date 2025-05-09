@@ -79,34 +79,48 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              'Dica: ${questaoAtual.dica}',
-              style: const TextStyle(fontSize: 20, color: Colors.white),
-              textAlign: TextAlign.center,
+            Flexible(
+              child: Text(
+                'Dica: ${questaoAtual.dica}',
+                style: const TextStyle(fontSize: 20, color: Colors.white),
+                textAlign: TextAlign.center,
+              ),
             ),
             const SizedBox(height: 20),
             if (_respostaAMostra)
-              Text(
-                'Resposta: ${questaoAtual.resposta}',
-                style: const TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.red,
+              Flexible(
+                child: Text(
+                  'Resposta: ${questaoAtual.resposta}',
+                  style: const TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed:
-                  _respostaAMostra ? _esconderResposta : _mostrarResposta,
-              child: Text(
-                _respostaAMostra ? 'Esconder Resposta' : 'Revelar Resposta',
-              ),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _proximaPergunta,
-              child: const Text('Próxima Pergunta'),
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed:
+                        _respostaAMostra ? _esconderResposta : _mostrarResposta,
+                    child: Text(
+                      _respostaAMostra
+                          ? 'Esconder Resposta'
+                          : 'Revelar Resposta',
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: _proximaPergunta,
+                    child: const Text('Próxima Pergunta'),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 20),
             ElevatedButton(
