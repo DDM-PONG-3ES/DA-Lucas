@@ -99,7 +99,7 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
             if (_respostaAMostra)
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.red.withOpacity(0.2),
+                  color: Colors.green.shade400,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 padding: const EdgeInsets.all(16),
@@ -108,7 +108,7 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
                   style: const TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: Colors.red,
+                    color: Colors.white,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -153,7 +153,7 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
             ElevatedButton.icon(
               onPressed: () {
                 Navigator.pushNamed(
-                  context, Rotas.cadastroPergunta,
+                  context, Rotas.telaQuiz,
                 );
               },
               icon: const Icon(Icons.add),

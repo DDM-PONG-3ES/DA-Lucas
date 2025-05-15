@@ -3,6 +3,8 @@ import 'package:echo_quiz/widgets/stateful/TelaCadastroUsuario.dart';
 import 'package:echo_quiz/widgets/stateful/TelaQuizWidget.dart';
 import 'package:echo_quiz/widgets/stateful/TelaCadastroPergunta.dart';
 import 'package:echo_quiz/widgets/stateless/TelaHomeWidget.dart';
+import 'package:echo_quiz/widgets/stateless/TelaListaPerguntaWidget.dart';
+import 'package:echo_quiz/widgets/stateless/TelaListaUsuarioWidget.dart';
 import 'package:flutter/material.dart';
 
 class Aplicativo extends StatelessWidget {
@@ -30,6 +32,8 @@ class Aplicativo extends StatelessWidget {
         Rotas.telaQuiz: (context) => const TelaQuizWidget(),
         Rotas.cadastroPergunta: (context) => const TelaCadastroPergunta(),
         Rotas.cadastroUsuario: (context) => const TelaCadastroUsuario(),
+        Rotas.listaUsuario: (context) => TelaListaUsuarioWidget(),
+        Rotas.listaPergunta: (context) => TelaListaPerguntaWidget(),
       },
     );
   }

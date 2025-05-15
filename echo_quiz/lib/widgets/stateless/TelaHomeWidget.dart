@@ -17,13 +17,9 @@ class TelaHomeWidget extends StatelessWidget {
       );
     }
 
-    Widget buildButton(
-      String buttonText,
-      ButtonStyle buttonStyle,
-      String route,
-    ) {
+    Widget buildButton(String buttonText, String route, {ButtonStyle? style}) {
       return ElevatedButton(
-        style: buttonStyle,
+        style: style,
         onPressed: () {
           Navigator.pushNamed(context, route);
         },
@@ -35,6 +31,36 @@ class TelaHomeWidget extends StatelessWidget {
       appBar: AppBar(
         title: const Text('EchoQuiz'),
         backgroundColor: Colors.red,
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(color: Colors.redAccent),
+              child: Text('Menu', style: TextStyle(fontSize: 24)),
+            ),
+            opcaoMenu(
+              Icon(Icons.question_mark),
+              'Cadastrar Pergunta',
+              Rotas.cadastroPergunta,
+            ),
+            opcaoMenu(
+              Icon(Icons.list_alt),
+              'Lista de Perguntas',
+              Rotas.listaPergunta,
+            ),
+            opcaoMenu(
+              Icon(Icons.person),
+              'Cadastrar Usuário',
+              Rotas.cadastroUsuario,
+            ),
+            opcaoMenu(
+              Icon(Icons.list_alt),
+              'Lista de Usuários',
+              Rotas.listaUsuario,
+            ),
+          ],
+        ),
       ),
       body: Stack(
         children: [
@@ -71,55 +97,16 @@ class TelaHomeWidget extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 30),
-                    Wrap(
-                      spacing: 10,
-                      runSpacing: 10,
-                      alignment: WrapAlignment.center,
+                    Row(
                       children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: buildButton(
-                                'Jogar',
-                                ElevatedButton.styleFrom(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 40,
-                                    vertical: 20,
-                                  ),
-                                  backgroundColor: Colors.red,
-                                  foregroundColor: Colors.white,
-                                ),
-                                Rotas.telaQuiz,
-                              ),
+                        Expanded(
+                          child: buildButton(
+                            'Jogar',
+                            Rotas.telaQuiz,
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.symmetric(vertical: 30),
                             ),
-                            const SizedBox(width: 30),
-                            Expanded(
-                              child: buildButton(
-                                'Cadastrar Pergunta',
-                                ElevatedButton.styleFrom(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 40,
-                                    vertical: 20,
-                                  ),
-                                  backgroundColor: Colors.red[900],
-                                  foregroundColor: Colors.white,
-                                ),
-                                Rotas.cadastroPergunta,
-                              ),
-                            ),
-                          ],
-                        ),
-                        buildButton(
-                          'Cadastrar Usuário',
-                          ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 40,
-                              vertical: 20,
-                            ),
-                            backgroundColor: Colors.green,
-                            foregroundColor: Colors.white,
                           ),
-                          Rotas.cadastroUsuario,
                         ),
                       ],
                     ),

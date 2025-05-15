@@ -13,7 +13,7 @@ class UsuarioService {
   UsuarioService._internal();
 
   final List<Usuario> _usuarios = [
-    Usuario(nome: 'Kanye West', pontuacao: Pontuacao(valor: 0)),
+    Usuario(nome: 'Kanye West', pontuacao: Pontuacao(valor: 88)),
   ];
 
   List<Usuario> get usuarios => _usuarios;
