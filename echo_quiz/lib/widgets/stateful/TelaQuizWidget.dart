@@ -2,6 +2,8 @@ import 'package:echo_quiz/entidades/Categoria.dart';
 import 'package:echo_quiz/entidades/Historico.dart';
 import 'package:echo_quiz/entidades/Pergunta.dart';
 import 'package:echo_quiz/entidades/Pontuacao.dart';
+import 'package:echo_quiz/entidades/services/PerguntaService.dart';
+import 'package:echo_quiz/widgets/stateless/TelaCadastroPergunta.dart';
 import 'package:flutter/material.dart';
 
 class TelaQuizWidget extends StatefulWidget {
@@ -12,23 +14,7 @@ class TelaQuizWidget extends StatefulWidget {
 }
 
 class _EstadoTelaQuiz extends State<TelaQuizWidget> {
-  final List<Pergunta> _perguntas = [
-    Pergunta(
-      dica: 'Rei do Pop',
-      resposta: 'Michael Jackson',
-      categoria: Categoria(nome: 'Pop'),
-    ),
-    Pergunta(
-      dica: 'Banda britânica famosa por "Bohemian Rhapsody"',
-      resposta: 'Queen',
-      categoria: Categoria(nome: 'Rock'),
-    ),
-    Pergunta(
-      dica: 'Cantora conhecida por "Hello"',
-      resposta: 'Adele',
-      categoria: Categoria(nome: 'Pop'),
-    ),
-  ];
+  final PerguntaService _perguntaService = PerguntaService();
 
   int _atualIndicePergunta = 0;
   bool _respostaAMostra = false;
@@ -49,7 +35,8 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
 
   void _proximaPergunta() {
     setState(() {
-      _atualIndicePergunta = (_atualIndicePergunta + 1) % _perguntas.length;
+      _atualIndicePergunta =
+          (_atualIndicePergunta + 1) % _perguntaService.perguntas.length;
       _respostaAMostra = false;
     });
   }
@@ -57,7 +44,10 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
   void _responder(bool acertou) {
     setState(() {
       _historico.add(
-        Historico(pergunta: _perguntas[_atualIndicePergunta], acertou: acertou),
+        Historico(
+          pergunta: _perguntaService.perguntas[_atualIndicePergunta],
+          acertou: acertou,
+        ),
       );
       if (acertou) {
         _pontuacao.incrementar(10);
@@ -68,49 +58,112 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final questaoAtual = _perguntas[_atualIndicePergunta];
+    final questaoAtual = _perguntaService.perguntas[_atualIndicePergunta];
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Quiz'),
-        backgroundColor: Colors.red,
-      ),
+      appBar: AppBar(title: const Text('Quiz'), backgroundColor: Colors.red),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'Dica: ${questaoAtual.dica}',
-              style: const TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-              ),
+              'Pergunta ${_atualIndicePergunta + 1} de ${_perguntaService.perguntas.length}',
+              style: TextStyle(fontSize: 14, color: Colors.grey[400]),
               textAlign: TextAlign.center,
             ),
+
             const SizedBox(height: 20),
-            if (_respostaAMostra)
-              Text(
-                'Resposta: ${questaoAtual.resposta}',
-                style: const TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.red,
+
+            Expanded(
+              flex: 2,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey[900],
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: Colors.red, width: 1),
                 ),
-                textAlign: TextAlign.center,
-              ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _respostaAMostra ? _esconderResposta : _mostrarResposta,
-              child: Text(
-                _respostaAMostra ? 'Esconder Resposta' : 'Revelar Resposta',
+                padding: const EdgeInsets.all(16),
+                alignment: Alignment.center,
+                child: Text(
+                  'Dica: ${questaoAtual.dica}',
+                  style: const TextStyle(fontSize: 22, color: Colors.white),
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
+
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _proximaPergunta,
-              child: const Text('Próxima Pergunta'),
+
+            if (_respostaAMostra)
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.red.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                padding: const EdgeInsets.all(16),
+                child: Text(
+                  'Resposta: ${questaoAtual.resposta}',
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+
+            const Spacer(),
+
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton.icon(
+                    onPressed: _proximaPergunta,
+                    icon: const Icon(Icons.arrow_forward),
+                    label: const Text('Próxima'),
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(vertical: 12),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: ElevatedButton.icon(
+                    onPressed:
+                        _respostaAMostra ? _esconderResposta : _mostrarResposta,
+                    icon: Icon(
+                      _respostaAMostra
+                          ? Icons.visibility_off
+                          : Icons.visibility,
+                    ),
+                    label: Text(_respostaAMostra ? 'Esconder' : 'Revelar'),
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(vertical: 12),
+                      backgroundColor:
+                          _respostaAMostra ? Colors.grey[700] : Colors.red,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Expanded(
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const TelaCadastroPergunta(),
+                        ),
+                      );
+                    },
+                    icon: const Icon(Icons.add),
+                    label: const Text('Cadastrar nova pergunta'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey[800],
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
