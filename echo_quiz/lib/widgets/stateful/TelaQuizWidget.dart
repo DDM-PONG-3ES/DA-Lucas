@@ -153,7 +153,7 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
             ElevatedButton.icon(
               onPressed: () {
                 Navigator.pushNamed(
-                  context, Rotas.telaQuiz,
+                  context, Rotas.cadastroPergunta,
                 );
               },
               icon: const Icon(Icons.add),
