@@ -1,3 +1,6 @@
+import 'package:echo_quiz/config/Rotas.dart';
+import 'package:echo_quiz/widgets/stateful/TelaQuizWidget.dart';
+import 'package:echo_quiz/widgets/stateless/TelaCadastroPergunta.dart';
 import 'package:echo_quiz/widgets/stateless/TelaHomeWidget.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +24,11 @@ class Aplicativo extends StatelessWidget {
           bodyLarge: TextStyle(color: Colors.white)
         )
       ),
-      home: const TelaHomeWidget(),
+      routes: {
+        Rotas.home: (context) => const TelaHomeWidget(),
+        Rotas.telaQuiz: (context) => const TelaQuizWidget(),
+        Rotas.cadastroPergunta: (context) => const TelaCadastroPergunta(),
+      },
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:echo_quiz/config/Rotas.dart';
 import 'package:echo_quiz/entidades/Categoria.dart';
 import 'package:echo_quiz/entidades/Historico.dart';
 import 'package:echo_quiz/entidades/Pergunta.dart';
@@ -146,24 +147,20 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
                   ),
                 ),
                 const SizedBox(height: 16),
-                Expanded(
-                  child: ElevatedButton.icon(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const TelaCadastroPergunta(),
-                        ),
-                      );
-                    },
-                    icon: const Icon(Icons.add),
-                    label: const Text('Cadastrar nova pergunta'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey[800],
-                    ),
-                  ),
-                ),
               ],
+            ),
+            SizedBox(height: 20),
+            ElevatedButton.icon(
+              onPressed: () {
+                Navigator.pop(
+                  context, Rotas.cadastroPergunta,
+                );
+              },
+              icon: const Icon(Icons.add),
+              label: const Text('Cadastrar nova pergunta'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.grey[800],
+              ),
             ),
           ],
         ),
