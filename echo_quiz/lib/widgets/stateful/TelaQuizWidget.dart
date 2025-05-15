@@ -4,7 +4,7 @@ import 'package:echo_quiz/entidades/Historico.dart';
 import 'package:echo_quiz/entidades/Pergunta.dart';
 import 'package:echo_quiz/entidades/Pontuacao.dart';
 import 'package:echo_quiz/entidades/services/PerguntaService.dart';
-import 'package:echo_quiz/widgets/stateless/TelaCadastroPergunta.dart';
+import 'package:echo_quiz/widgets/stateful/TelaCadastroPergunta.dart';
 import 'package:flutter/material.dart';
 
 class TelaQuizWidget extends StatefulWidget {
@@ -152,7 +152,7 @@ class _EstadoTelaQuiz extends State<TelaQuizWidget> {
             SizedBox(height: 20),
             ElevatedButton.icon(
               onPressed: () {
-                Navigator.pop(
+                Navigator.pushNamed(
                   context, Rotas.cadastroPergunta,
                 );
               },
