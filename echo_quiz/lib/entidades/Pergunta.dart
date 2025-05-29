@@ -3,6 +3,9 @@ import 'package:echo_quiz/entidades/Categoria.dart';
 class Pergunta {
   final String dica;
   final String resposta;
+  // Vou manter como String
+  // porque a resposta pode ser tanto uma música
+  // quanto um artista
   final Categoria categoria;
 
   Pergunta({
