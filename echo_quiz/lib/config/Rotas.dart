@@ -5,4 +5,6 @@ class Rotas {
   static const String listaPergunta = '/lista-pergunta';
   static const String cadastroUsuario = '/cadastro-usuario';
   static const String listaUsuario = '/lista-usuario';
+  static const String cadastroCategoria = '/cadastro-categoria';
+  static const String listaCategoria = '/lista-categoria';
 }

@@ -1,5 +1,6 @@
 import 'package:echo_quiz/entidades/Categoria.dart';
 import 'package:echo_quiz/entidades/Pergunta.dart';
+import 'package:echo_quiz/entidades/services/CategoriaService.dart';
 import 'package:echo_quiz/entidades/services/PerguntaService.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,7 @@ class _TelaCadastroPerguntaState extends State<TelaCadastroPergunta> {
   String? _categoriaSelecionada;
 
   final PerguntaService _perguntaService = PerguntaService();
+  final CategoriaService _categoriaService = CategoriaService();
 
   @override
   Widget build(BuildContext context) {
@@ -92,20 +94,13 @@ class _TelaCadastroPerguntaState extends State<TelaCadastroPergunta> {
                                 border: OutlineInputBorder(),
                                 prefixIcon: Icon(Icons.library_music),
                               ),
-                              items: const [
-                                DropdownMenuItem(
-                                  value: 'Jazz',
-                                  child: Text('JAZZ'),
-                                ),
-                                DropdownMenuItem(
-                                  value: 'Rock',
-                                  child: Text('ROCK'),
-                                ),
-                                DropdownMenuItem(
-                                  value: 'Pop',
-                                  child: Text('POP'),
-                                ),
-                              ],
+                              items:
+                                  _categoriaService.categorias.map((categoria) {
+                                    return DropdownMenuItem<String>(
+                                      value: categoria.nome,
+                                      child: Text(categoria.nome),
+                                    );
+                                  }).toList(),
                               onChanged: (value) {
                                 setState(() {
                                   _categoriaSelecionada = value;
@@ -165,10 +160,12 @@ class _TelaCadastroPerguntaState extends State<TelaCadastroPergunta> {
 
   void _salvarPergunta() {
     if (_formKey.currentState!.validate()) {
+      final categoria = _categoriaService.buscarPorNome(_categoriaSelecionada!);
+
       final novaPergunta = Pergunta(
         dica: _dicaController.text,
         resposta: _respostaController.text,
-        categoria: Categoria(nome: _categoriaSelecionada!),
+        categoria: categoria!,
       );
 
       _perguntaService.adicionarPergunta(novaPergunta);

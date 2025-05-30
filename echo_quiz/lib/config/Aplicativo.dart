@@ -1,4 +1,5 @@
 import 'package:echo_quiz/config/Rotas.dart';
+import 'package:echo_quiz/widgets/stateful/TelaCadastroCategoria.dart';
 import 'package:echo_quiz/widgets/stateful/TelaCadastroUsuario.dart';
 import 'package:echo_quiz/widgets/stateful/TelaQuizWidget.dart';
 import 'package:echo_quiz/widgets/stateful/TelaCadastroPergunta.dart';
@@ -34,6 +35,7 @@ class Aplicativo extends StatelessWidget {
         Rotas.cadastroUsuario: (context) => const TelaCadastroUsuario(),
         Rotas.listaUsuario: (context) => TelaListaUsuarioWidget(),
         Rotas.listaPergunta: (context) => TelaListaPerguntaWidget(),
+        Rotas.cadastroCategoria: (context) => const TelaCadastroCategoria(),
       },
     );
   }

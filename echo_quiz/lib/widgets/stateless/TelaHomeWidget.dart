@@ -59,6 +59,11 @@ class TelaHomeWidget extends StatelessWidget {
               'Lista de Usuários',
               Rotas.listaUsuario,
             ),
+            opcaoMenu(
+              Icon(Icons.category),
+              'Cadastrar categoria',
+              Rotas.cadastroCategoria,
+            ),
           ],
         ),
       ),
